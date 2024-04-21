@@ -1,15 +1,14 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, render_template, jsonify
+from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
-
+CORS(app)
 
 @app.route("/")
-def hello_world():
-    return "hello world"
-
-@app.route("/login", methods=["POST"])
+@app.route("/login", methods=["GET","POST"])
 def login():
     if request.method == "POST":
-        data = request.get_json()
-        print(data)
-        return {"status":200}
+        print(request.json)
+        return jsonify({"status":200})
+    elif request.method == "GET":
+        return render_template("login_page.html")

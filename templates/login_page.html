@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <script>
+            async function login(){
+                const username = document.getElementById("username").value
+                const password = document.getElementById("password").value
+                const loginurl = "http://127.0.0.1:5000/login"
+                const reqOptions = {
+                    method:"POST",
+                    headers:{"Content-Type":"application/json"},
+                    body: JSON.stringify({"username": username,"password":password}),
+                }
+
+                try{
+                    const response = await fetch(loginurl,reqOptions)
+                
+                    const result = await response.json()
+                    console.log(`Success! Recieved: ${result}`)
+                } catch (error){
+                    console.error(`Error: ${error}`)
+                }
+
+            }
+        </script>
+        <div>
+            <h1>Login</h1>
+            <input id="username" type="text">
+            <input id="password" type="text">
+            <button onclick="login()">submit</button>
+        </div>
+    </body>
+</html>
