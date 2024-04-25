@@ -19,7 +19,7 @@
                     const response = await fetch(loginurl,reqOptions)
                 
                     const result = await response.json()
-                    console.log(`Success! Recieved: ${result}`)
+                    console.log(JSON.stringify(result))
                 } catch (error){
                     console.error(`Error: ${error}`)
                 }
