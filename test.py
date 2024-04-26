@@ -21,6 +21,15 @@ def readData(data):
             for i in range(len(contents)):
                 contents[i] = contents[i].replace("\n", "").split(":")
 
+def checkIfUserExists(json):
+    userdata = [json["username"],json["password"]]
+    with open("userNpass.txt", "r") as f:
+        contents = f.readlines()
+        for i in range(len(contents)):
+            contents[i] = contents[i].replace("\n", "").split(":")
+            if userdata[0] in contents[i][0]:
+                 return True
+            else:
+                 return False
 
-
-writeData(data)
+print("a")
